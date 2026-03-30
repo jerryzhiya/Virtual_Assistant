@@ -1,77 +1,90 @@
 
+// src/components/Hero.tsx
+import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/content';
+import type { PersonalInfo } from '../types';
 
-const Hero = () => {
+const Hero: React.FC = () => {
+  const info = personalInfo as PersonalInfo;
+  // Use provided content or fallbacks requested by you
+  const displayName = info.name ?? 'Jeremiah Zhiya';
+  const displayRole = info.role ?? 'Social Media Manager';
+  const displayBio = info.bio ?? 'I help busy people get organized, run smooth operations, and free up time so they can focus on what matters most.';
+  const imgSrc: string = info.image ?? '/default-avatar.png';
+
+  const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0, y: 8 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay },
+  });
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-brand-bg to-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center">
-        
-        {/* Text Content */}
-        <div className="w-full md:w-1/2 text-center md:text-left mt-8 md:mt-0">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight"
-          >
-            Hi, I'm <span className="text-blue-500">{personalInfo.name}</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-xl text-gray-600"
-          >
-            {personalInfo.role}
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-4 text-gray-500 max-w-lg mx-auto md:mx-0"
-          >
-            {personalInfo.bio}
-          </motion.p>
-          
-          {/* Social Links */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-8 flex justify-center md:justify-start space-x-6"
-          >
-            {personalInfo.socialLinks.map((social, index) => (
-              <a 
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-transform hover:scale-110"
-                aria-label={social.label}
-              >
-                <social.icon size={28} />
-              </a>
-            ))}
-          </motion.div>
-        </div>
+    <section className="relative w-full bg-gray-900 py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden z-0 opacity-20 pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl" />
+        <div className="absolute top-0 -right-24 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl" />
+      </div>
 
-        {/* Profile Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="w-full md:w-1/2 flex justify-center"
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto text-center flex flex-col items-center">
+        {/* Profile with polygon clip-path */}
+        <motion.div
+          {...fadeIn(0)}
+          className="profile-container relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto mb-12 shadow-2xl"
+          style={{
+            WebkitClipPath: 'polygon(50% 0%, 0% 0%, 0% 100%, 50% 85%, 100% 100%, 100% 0%)',
+            clipPath: 'polygon(50% 0%, 0% 0%, 0% 100%, 50% 85%, 100% 100%, 100% 0%)',
+            overflow: 'hidden',
+          }}
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80">
-            <div className="absolute inset-0 bg-brand-dark rounded-full opacity-20 animate-pulse"></div>
-            <img 
-              src="/profile-pics.jpeg" 
-              alt="Jerry Creative Profile" 
-              className="w-full h-full object-cover rounded-full border-4 border-white shadow-xl relative z-10"
-              loading="lazy"
-            />
-          </div>
+          <img
+            src={imgSrc}
+            alt={`${displayName} profile`}
+            className="w-full h-full object-cover block"
+            loading="lazy"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{ boxShadow: 'inset 0 0 0 6px rgba(255,255,255,0.04)' }}
+          />
+        </motion.div>
+
+        {/* Name */}
+        <motion.h1
+          {...fadeIn(0.1)}
+          className="font-extrabold text-white text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-4"
+        >
+          {displayName}
+        </motion.h1>
+
+        {/* Role / subtitle */}
+        <motion.p
+          {...fadeIn(0.3)}
+          className="text-gray-300 text-lg sm:text-xl lg:text-2xl font-light mb-8 max-w-2xl mx-auto"
+        >
+          {displayRole} <span className="text-blue-500 mx-2">|</span> {displayBio}
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div {...fadeIn(0.5)} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            className="px-8 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-shadow shadow-lg"
+            role="button"
+          >
+            Contact Me
+          </a>
+
+          <a
+            href="/portfolio"
+            className="px-8 py-3 rounded-full border border-gray-600 text-gray-300 font-semibold hover:border-white hover:text-white transition"
+            role="button"
+          >
+            View Projects
+          </a>
         </motion.div>
       </div>
     </section>

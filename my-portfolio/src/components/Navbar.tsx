@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { personalInfo } from '../data/content';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="text-2xl font-bold text-blue-500">
-            <img src="/my-logo.png" alt="Logo" className="h-[50px] w-auto" />
+            <img src={personalInfo.mylogo}
+             alt="Logo" className="h-[50px] w-auto" />
           </div>
           
           {/* Desktop Menu */}
