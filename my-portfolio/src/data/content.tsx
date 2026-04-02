@@ -5,6 +5,7 @@ import reemImage from '../assets/Reem.jpg';
 import sunnyImage from '../assets/sunny2.jpeg';
 import sarahImage from '../assets/Sarah.jpg';
 import profileImage from '../assets/profile-pics.jpeg';
+import Mercy2 from '../assets/Mercy2.png';
 import logo from '../assets/my-logo.png';
 
 // Local Skill type for data shape (you can move this to src/types.ts if you prefer)
@@ -20,8 +21,8 @@ export interface Skill {
 
 export const personalInfo: PersonalInfo = {
   name: 'Jeremiah Zhiya',
-  role: 'Social Media Manager',
-  bio: 'I help busy people get organized, run smooth operations, and free up time so they can focus on what matters most.',
+  role: 'Frontend Developer | Social Media Manager',
+ bio: 'Dedicated to crafting modern web experiences and guiding brands to thrive online through creative digital strategies.',
   image: profileImage,
   mylogo: logo,
   email: 'jeremiahzhiya.va@gmail.com',
@@ -35,6 +36,12 @@ export const personalInfo: PersonalInfo = {
 
 export const testimonials: Testimonial[] = [
   {
+    name: 'Adebanwo Mercy',
+    role: 'Executive Assistant, Disu Foundation',
+    text: 'Jeremiah built my portfolio website and I was amazed at how professional and user-friendly it turned out. What excited me the most was that visitors can now send me emails directly through the site — it feels like my business is finally connected to the world. His work exceeded my expectations and gave me confidence in my online presence.',
+    image: Mercy2,
+  },
+  {
     name: 'Sarah',
     role: 'CEO, Bloom Co.',
     text: "Jerry transformed our Instagram from a ghost town into our biggest revenue driver.",
@@ -42,8 +49,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: 'Sunny John',
-    role: 'Founder, TechStart',
-    text: "The most organized and creative SMM I've ever worked with. Highly recommended!",
+    role: 'Graphic Designer, Freelance',
+    text: 'Working with Jeremiah was a fantastic experience. He built a sleek, professional portfolio website that perfectly showcases my design work. I was thrilled to see how easy it is for potential clients to reach me directly through the site. His attention to detail and ability to bring my vision online made the whole process smooth and rewarding',
     image: sunnyImage,
   },
   {
@@ -54,18 +61,73 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-/**
- * Skills array
- *
- * - `name`: skill name shown in UI
- * - `level`: rough proficiency
- * - `years`: optional years of experience
- * - `description`: short blurb for tooltips or details
- * - `icon`: optional string (path or class) — resolve to an actual icon component in your UI
- */
 export const skills: Skill[] = [
   {
     id: 's1',
+    name: 'HTML5 & Semantic Markup',
+    level: 'Expert',
+    years: 4,
+    description: 'Building accessible, SEO-friendly web pages with semantic HTML structure.',
+    icon: '/icons/html.svg',
+  },
+  {
+    id: 's2',
+    name: 'CSS3 & Responsive Design',
+    level: 'Expert',
+    years: 4,
+    description: 'Creating responsive layouts with Flexbox, Grid, and media queries for all devices.',
+    icon: '/icons/css.svg',
+  },
+  {
+    id: 's3',
+    name: 'JavaScript (ES6+)',
+    level: 'Advanced',
+    years: 3,
+    description: 'Developing interactive features, DOM manipulation, and modern ES6+ syntax.',
+    icon: '/icons/javascript.svg',
+  },
+  {
+    id: 's4',
+    name: 'React & Next.js',
+    level: 'Advanced',
+    years: 3,
+    description: 'Building dynamic SPAs and SSR applications with React hooks, context, and Next.js.',
+    icon: '/icons/react.svg',
+  },
+  {
+    id: 's5',
+    name: 'Version Control (Git/GitHub)',
+    level: 'Expert',
+    years: 5,
+    description: 'Managing codebases, branching strategies, and collaborative workflows using Git.',
+    icon: '/icons/git.svg',
+  },
+  {
+    id: 's6',
+    name: 'UI/UX Design',
+    level: 'Intermediate',
+    years: 2,
+    description: 'Translating wireframes into functional interfaces with attention to usability and aesthetics.',
+    icon: '/icons/uiux.svg',
+  },
+  {
+    id: 's7',
+    name: 'API Integration',
+    level: 'Advanced',
+    years: 3,
+    description: 'Connecting applications to REST APIs and handling asynchronous data with fetch/axios.',
+    icon: '/icons/api.svg',
+  },
+  {
+    id: 's8',
+    name: 'Deployment & Hosting',
+    level: 'Intermediate',
+    years: 2,
+    description: 'Deploying projects on Vercel, Netlify, and GitHub Pages with CI/CD workflows.',
+    icon: '/icons/deploy.svg',
+  },
+  {
+    id: 's9',
     name: 'Calendar & Schedule Management',
     level: 'Expert',
     years: 6,
@@ -73,7 +135,7 @@ export const skills: Skill[] = [
     icon: '/icons/calendar.svg',
   },
   {
-    id: 's2',
+    id: 's10',
     name: 'Email & Inbox Triage',
     level: 'Expert',
     years: 6,
@@ -81,7 +143,7 @@ export const skills: Skill[] = [
     icon: '/icons/mail.svg',
   },
   {
-    id: 's3',
+    id: 's11',
     name: 'Project Management',
     level: 'Advanced',
     years: 4,
@@ -89,7 +151,7 @@ export const skills: Skill[] = [
     icon: '/icons/project.svg',
   },
   {
-    id: 's4',
+    id: 's12',
     name: 'Social Media Management',
     level: 'Advanced',
     years: 3,
@@ -97,7 +159,7 @@ export const skills: Skill[] = [
     icon: '/icons/social.svg',
   },
   {
-    id: 's5',
+    id: 's13',
     name: 'Communication & Stakeholder Management',
     level: 'Expert',
     years: 6,
@@ -105,7 +167,7 @@ export const skills: Skill[] = [
     icon: '/icons/communication.svg',
   },
   {
-    id: 's6',
+    id: 's14',
     name: 'Research & Reporting',
     level: 'Advanced',
     years: 5,
